@@ -5,14 +5,12 @@ const twitterBtn = document.getElementById('js-twitter');
 const newQuoteBtn = document.getElementById('js-new-quote');
 const loader = document.getElementById('js-loader');
 
-// Now Loading
-function loading() {
+function startLoadingSpinner() {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
-// Hide Loading
-function complete() {
+function removeLoadingSpinner() {
     if (!loader.hidden) {
         quoteContainer.hidden = false;
         loader.hidden =true
@@ -21,7 +19,7 @@ function complete() {
 
 // Get Quote From API
 async function getQuote() {
-    loading();
+    startLoadingSpinner();
     const proxyUrl = 'https://damp-garden-72716.herokuapp.com/';
     const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
     const tweetText = [];
@@ -41,9 +39,9 @@ async function getQuote() {
             quoteText.classList.remove('long-quote');
         }
         quoteText.innerText = data.quoteText;
-        // Stop Loader, Show Quote
-        complete();
+        removeLoadingSpinner();
     } catch (error) {
+        console.log(Error);
         getQuote();
     }
 }
