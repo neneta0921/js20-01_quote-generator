@@ -22,7 +22,6 @@ async function getQuote() {
     startLoadingSpinner();
     const proxyUrl = 'https://damp-garden-72716.herokuapp.com/';
     const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
-    const tweetText = [];
     try {
         const response = await fetch(proxyUrl + apiUrl);
         const data = await response.json();
