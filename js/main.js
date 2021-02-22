@@ -11,7 +11,6 @@ class Main {
   }
 
   _init() {
-    // On Load
     this.quote.getQuote();
   }
 
